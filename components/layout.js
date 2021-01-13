@@ -10,6 +10,8 @@ import MenuIcon from "@material-ui/icons/Menu"
 const name = 'Chesda Reth'
 export const siteTitle = 'Next.js Sample Website'
 
+//const useStyles = makeStyles((theme) => ({
+
 const header = () => {
     return (
         <AppBar position="static">
@@ -19,7 +21,7 @@ const header = () => {
                 </IconButton>
                 <Typography variant="h6" >
                     News
-    </Typography>
+                </Typography>
                 <Button color="inherit">Login</Button>
             </Toolbar>
         </AppBar>
