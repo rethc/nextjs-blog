@@ -2,6 +2,7 @@ import Head from 'next/head'
 import styles from './layout.module.css'
 import utilStyles from '../styles/utils.module.css'
 import Link from 'next/link'
+import Image from 'next/image'
 
 const name = 'Chesda Reth'
 export const siteTitle = 'Chesda Reth | Portfolio'
@@ -10,6 +11,13 @@ export default function Layout({ children, home }) {
     return (
         <div className={styles.container}>
             <Head>
+                <script dangerouslySetInnerHTML={{
+                    __html: `  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9S3FM53SXQ');
+` }} />
                 <link rel="icon" href="/favicon.ico" />
                 <link rel="preconnect" href="https://fonts.gstatic.com" />
                 <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet" />
@@ -23,14 +31,18 @@ export default function Layout({ children, home }) {
                 />
                 <meta name="og:title" content={siteTitle} />
                 <meta name="twitter:card" content="summary_large_image" />
+
+
             </Head>
             <header className={styles.header}>
                 {home ? (
                     <>
-                        <img
+                        <Image
                             src="/images/profile.jpg"
-                            className={`${styles.headerHomeImage} ${utilStyles.borderCircle}`}
+                            className={`${styles.headerImage} ${utilStyles.borderCircle}`}
                             alt={name}
+                            width={110}
+                            height={110}
                         />
                         <h1 className={utilStyles.headingLg}>{name}</h1>
                     </>
@@ -38,10 +50,12 @@ export default function Layout({ children, home }) {
                         <>
                             <Link href="/">
                                 <a>
-                                    <img
+                                    <Image
                                         src="/images/profile.jpg"
                                         className={`${styles.headerImage} ${utilStyles.borderCircle}`}
                                         alt={name}
+                                        width={110}
+                                        height={110}
                                     />
                                 </a>
                             </Link>
