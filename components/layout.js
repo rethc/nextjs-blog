@@ -1,66 +1,38 @@
 import Head from 'next/head'
+import styles from './layout.module.css'
+import utilStyles from '../styles/utils.module.css'
 import Link from 'next/link'
-import AppBar from "@material-ui/core/AppBar"
-import Toolbar from "@material-ui/core/Toolbar"
-import Typography from "@material-ui/core/Typography"
-import IconButton from "@material-ui/core/IconButton"
-import Button from "@material-ui/core/Button"
-import MenuIcon from "@material-ui/icons/Menu"
 
 const name = 'Chesda Reth'
-export const siteTitle = 'Next.js Sample Website'
+export const siteTitle = 'Chesda Reth | Portfolio'
 
-//const useStyles = makeStyles((theme) => ({
-
-const header = () => {
+export default function Layout({ children, home }) {
     return (
-        <AppBar position="static">
-            <Toolbar>
-                <IconButton edge="start" color="inherit" aria-label="menu">
-                    <MenuIcon />
-                </IconButton>
-                <Typography variant="h6" >
-                    News
-                </Typography>
-                <Button color="inherit">Login</Button>
-            </Toolbar>
-        </AppBar>
-    );
-}
-
-const footer = () => {
-
-}
-
-
-const Layout = ({ children, home }) => {
-    return (
-        <div>
+        <div className={styles.container}>
             <Head>
                 <link rel="icon" href="/favicon.ico" />
+                <link rel="preconnect" href="https://fonts.gstatic.com" />
+                <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet" />
                 <meta
                     name="description"
-                    content="Learn how to build a personal website using Next.js"
+                    content="Chesda Reth Dev Portfolio and Blog"
                 />
                 <meta
                     property="og:image"
-                    content={`https://og-image.now.sh/${encodeURI(
-                        siteTitle
-                    )}.png?theme=light&md=0&fontSize=75px&images=https%3A%2F%2Fassets.vercel.com%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fnextjs-black-logo.svg`}
+                    content={`https://og-image.now.sh/Chesda%20Reth.png?theme=light&md=0&fontSize=100px&images=https%3A%2F%2Fassets.vercel.com%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fnextjs-black-logo.svg`}
                 />
                 <meta name="og:title" content={siteTitle} />
                 <meta name="twitter:card" content="summary_large_image" />
             </Head>
-            {header()}
-            <header>
+            <header className={styles.header}>
                 {home ? (
                     <>
                         <img
                             src="/images/profile.jpg"
-
+                            className={`${styles.headerHomeImage} ${utilStyles.borderCircle}`}
                             alt={name}
                         />
-                        <h1>{name}</h1>
+                        <h1 className={utilStyles.headingLg}>{name}</h1>
                     </>
                 ) : (
                         <>
@@ -68,13 +40,14 @@ const Layout = ({ children, home }) => {
                                 <a>
                                     <img
                                         src="/images/profile.jpg"
+                                        className={`${styles.headerImage} ${utilStyles.borderCircle}`}
                                         alt={name}
                                     />
                                 </a>
                             </Link>
                             <h2 className={utilStyles.headingLg}>
                                 <Link href="/">
-                                    <a>{name}</a>
+                                    <a className={utilStyles.colorInherit}>{name}</a>
                                 </Link>
                             </h2>
                         </>
@@ -82,7 +55,7 @@ const Layout = ({ children, home }) => {
             </header>
             <main>{children}</main>
             {!home && (
-                <div>
+                <div className={styles.backToHome}>
                     <Link href="/">
                         <a>← Back to home</a>
                     </Link>
@@ -91,5 +64,3 @@ const Layout = ({ children, home }) => {
         </div>
     )
 }
-
-export default Layout;
